@@ -16,14 +16,40 @@
 
 // Task 7 - get username (come back to make it only up to 10 characters)
 let userName = prompt("Enter your name");
+alert(`Hello ${userName}`);
+let userInput = prompt(`Enter your choice of Rock, Paper or Scissors`);
+let computerChoices = [ "Rock", "Paper", "Scissors" ];
+let playAgain = true;
+while (playAgain === true) {
+    if (checkUserInput() === true) {
+        console.log("The game starts!");
+    }
+    console.log(`You chose ${userInput}`);
 
-// Task 3 - get user input
-let userInput = prompt(`Hello ${userName}, enter your choice of Rock, Paper or Scissors`);
+    let computerInput = computerChoices[computerInputGenerator(computerChoices)];
+    console.log(`The computer randomly chose ${computerInput}`);
 
-function checkUserInput() {
+    let gameResult = getWinner(userInput, computerInput);
+    console.log(gameResult);
+    confirmAnswer = confirm(`${userName}, would you like to continue playing?`);
+    if (confirmAnswer === true) {
+        playAgain = true;
+        userInput = prompt(`Enter your choice of Rock, Paper or Scissors`);
+    }
+    else {
+        playAgain = false;
+        alert(`Thank you, ${userName}, for playing, see you another time!`)
+    }
+}
+
+
+
+
+
+  function checkUserInput() {
     let result = true;
     if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
-        console.log(`You chose ${userInput}`);
+        result = true;
     }
     else { result = false;
         //prompt(`Please choose either Rock, Paper or Scissors, ${userName}`);
@@ -41,19 +67,12 @@ if (counter === 6) {
     console.log(`Sorry ${userName}, you've tried too many times, it looks like you don't want to play.`);
 }*/
 
-if (checkUserInput() === true) {
-    console.log("The game starts!");
-}
-
 // Task 4 - computer input
-let computerChoices = [ "Rock", "Paper", "Scissors" ];
 function computerInputGenerator(myArray) {
     return Math.floor(Math.random() * myArray.length);
 }
-console.log(computerChoices[computerInputGenerator(computerChoices)]);
-let computerInput = computerChoices[computerInputGenerator(computerChoices)];
 
-//Task 2 functions for win or lose
+  //Task 2 functions for win or lose
 function getWinner(player1, player2) {
     let roundResult = 0;
     if ((player1 === "Rock" && player2 === "Rock") || (player1 === "Paper" && player2 === "Paper") || (player1 === "Scissors" && player2 === "Scissors")) {
@@ -67,9 +86,6 @@ function getWinner(player1, player2) {
     }
     return roundResult;
   }
-  
-  let result = getWinner(userInput, computerInput);
-  console.log(result);
 
 
 
