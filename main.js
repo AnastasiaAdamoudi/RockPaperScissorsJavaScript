@@ -47,11 +47,29 @@ if (checkUserInput() === true) {
 
 // Task 4 - computer input
 let computerChoices = [ "Rock", "Paper", "Scissors" ];
-function computerInput(myArray) {
-    return Math.floor(Math.random()) * myArray.length;
+function computerInputGenerator(myArray) {
+    return Math.floor(Math.random() * myArray.length);
 }
+console.log(computerChoices[computerInputGenerator(computerChoices)]);
+let computerInput = computerChoices[computerInputGenerator(computerChoices)];
 
-
+//Task 2 functions for win or lose
+function getWinner(player1, player2) {
+    let roundResult = 0;
+    if ((player1 === "Rock" && player2 === "Rock") || (player1 === "Paper" && player2 === "Paper") || (player1 === "Scissors" && player2 === "Scissors")) {
+        roundResult = 0; //draw
+    }
+    if ((player1 === "Rock" && player2 === "Scissors") || (player1 === "Paper" && player2 === "Rock") || (player1 === "Scissors" && player2 === "Paper")) {
+        roundResult = 1; //win for player 1
+    }
+    if ((player1 === "Rock" && player2 === "Paper") || (player1 === "Paper" && player2 === "Scissors") || (player1 === "Scissors" && player2 === "Rock")) {
+        roundResult = -1; //loss for player 1
+    }
+    return roundResult;
+  }
+  
+  let result = getWinner(userInput, computerInput);
+  console.log(result);
 
 
 
