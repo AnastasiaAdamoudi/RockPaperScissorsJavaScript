@@ -72,26 +72,26 @@ function checkUsernameLength(name) {
 
 
 
-  function checkUserInput() {
+/*function checkUserInput() {
     let result = true;
     if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
         result = true;
     }
-    else { result = false;
-        //prompt(`Please choose either Rock, Paper or Scissors, ${userName}`);
+    else {
+        let counter = 0;
+        while (result === false) {
+            if (counter < 5) {
+            userInput = prompt(`Sorry ${userName}, you need to enter Rock, Paper or Scissors`);
+            counter++;
+        }
+        else if (counter === 6) {
+            console.log(`Sorry ${userName}, you've tried too many times, it looks like you don't want to play.`);
+        }        
     }  
+}
     return result;
-}
-
-/*let counter = 0;
-while (checkUserInput() === false || counter < 5) {
-    userInput = prompt(`Sorry ${userName}, you need to enter Rock, Paper or Scissors`);
-
-}
-
-if (counter === 6) {
-    console.log(`Sorry ${userName}, you've tried too many times, it looks like you don't want to play.`);
 }*/
+
 
 // Task 4 - computer input
 function computerInputGenerator(myArray) {
