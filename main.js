@@ -16,22 +16,39 @@
 
 // Task 7 - get username (come back to make it only up to 10 characters)
 let userName = prompt("Enter your name");
+userName = checkUsernameLength(userName);
 alert(`Hello ${userName}`);
 let userInput = prompt(`Enter your choice of Rock, Paper or Scissors`);
 let computerChoices = [ "Rock", "Paper", "Scissors" ];
 let playAgain = true;
+let gameNumber = 0;
+let winNumber = 0;
+let drawNumber = 0;
+let lossNumber = 0;
+let score = 0;
 while (playAgain === true) {
     if (checkUserInput() === true) {
-        console.log("The game starts!");
+        alert("The game starts!");
     }
-    console.log(`You chose ${userInput}`);
+    alert(`You chose ${userInput}`);
 
     let computerInput = computerChoices[computerInputGenerator(computerChoices)];
-    console.log(`The computer randomly chose ${computerInput}`);
+    alert(`The computer randomly chose ${computerInput}`);
 
     let gameResult = getWinner(userInput, computerInput);
-    console.log(gameResult);
-    confirmAnswer = confirm(`${userName}, would you like to continue playing?`);
+    if (gameResult === 1) {
+        alert("You won this round!");
+    };
+    if (gameResult === -1) {
+        alert("Sorry, you lost this round.");
+    };
+    if (gameResult === 0) {
+        alert("It's a draw!");
+    };
+    score += gameResult;
+    alert(`Your score is ${score}`);
+    gameNumber++;
+    confirmAnswer = confirm(`${userName}, would you like to play round ${gameNumber + 1}`);
     if (confirmAnswer === true) {
         playAgain = true;
         userInput = prompt(`Enter your choice of Rock, Paper or Scissors`);
@@ -42,6 +59,15 @@ while (playAgain === true) {
     }
 }
 
+
+function checkUsernameLength(name) {
+    while (name.length > 10) {
+    name = prompt("Enter your name using 10 characters or less.");
+}
+    if (name.length <= 10) {
+        return name;
+}
+}
 
 
 
@@ -76,13 +102,16 @@ function computerInputGenerator(myArray) {
 function getWinner(player1, player2) {
     let roundResult = 0;
     if ((player1 === "Rock" && player2 === "Rock") || (player1 === "Paper" && player2 === "Paper") || (player1 === "Scissors" && player2 === "Scissors")) {
-        roundResult = 0; //draw
+        roundResult = 0; 
+        drawNumber++;//draw
     }
     if ((player1 === "Rock" && player2 === "Scissors") || (player1 === "Paper" && player2 === "Rock") || (player1 === "Scissors" && player2 === "Paper")) {
-        roundResult = 1; //win for player 1
+        roundResult = 1; 
+        winNumber++;//win for player 1
     }
     if ((player1 === "Rock" && player2 === "Paper") || (player1 === "Paper" && player2 === "Scissors") || (player1 === "Scissors" && player2 === "Rock")) {
-        roundResult = -1; //loss for player 1
+        roundResult = -1; 
+        lossNumber++;//loss for player 1
     }
     return roundResult;
   }
