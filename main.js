@@ -91,7 +91,16 @@ function checkUsernameLength(name) {
 }
     return result;
 }*/
-
+function checkUserInput() {
+    let result = true;
+    if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
+        result = true;
+    }
+    else { result = false;
+        //prompt(`Please choose either Rock, Paper or Scissors, ${userName}`);
+    }  
+    return result;
+}
 
 // Task 4 - computer input
 function computerInputGenerator(myArray) {
