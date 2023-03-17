@@ -13,7 +13,11 @@
 //Ask user if they want to play again
 //Ask if they want to change user
 
+
+// Task 7 - get username (come back to make it only up to 10 characters)
 let userName = prompt("Enter your name");
+
+// Task 3 - get user input
 let userInput = prompt(`Hello ${userName}, enter your choice of Rock, Paper or Scissors`);
 
 function checkUserInput() {
@@ -26,6 +30,28 @@ function checkUserInput() {
     }  
     return result;
 }
-console.log(checkUserInput());
+
+/*let counter = 0;
+while (checkUserInput() === false || counter < 5) {
+    userInput = prompt(`Sorry ${userName}, you need to enter Rock, Paper or Scissors`);
+
+}
+
+if (counter === 6) {
+    console.log(`Sorry ${userName}, you've tried too many times, it looks like you don't want to play.`);
+}*/
+
+if (checkUserInput() === true) {
+    console.log("The game starts!");
+}
+
+// Task 4 - computer input
+let computerChoices = [ "Rock", "Paper", "Scissors" ];
+function computerInput(myArray) {
+    return Math.floor(Math.random()) * myArray.length;
+}
+
+
+
 
 
